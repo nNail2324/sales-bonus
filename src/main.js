@@ -121,6 +121,7 @@ function analyzeSalesData(data, options) {
             .slice(0, 10);
     }); 
 
+    // @TODO: Подготовка итоговой коллекции с нужными полями
     return sellerStats.map(seller => ({
         seller_id: seller.id, // Строка, идентификатор продавца
         name: seller.name, // Строка, имя продавца
@@ -130,5 +131,4 @@ function analyzeSalesData(data, options) {
         top_products: seller.top_products, // Массив объектов вида: { "sku": "SKU_008","quantity": 10}, топ-10 товаров продавца
         bonus: +seller.bonus.toFixed(2), // Число с двумя знаками после точки, бонус продавца
     })); 
-    // @TODO: Подготовка итоговой коллекции с нужными полями
 }
