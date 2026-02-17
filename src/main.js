@@ -106,12 +106,13 @@ function analyzeSalesData(data, options) {
                 seller.products_sold[item.sku] = 0;
             }
             // По артикулу товара увеличить его проданное количество у продавца
-            seller.products_sold[item.sku] += 1;
+            seller.products_sold[item.sku] += item.quantity;
         });
     });
 
     // @TODO: Сортировка продавцов по прибыли
     sellerStats.sort((a, b) => b.profit - a.profit);
+    console.log(sellerStats);
     // @TODO: Назначение премий на основе ранжирования
     sellerStats.forEach((seller, index, sellers) => {
         seller.bonus = calculateBonus(index, sellers.length, seller); // Считаем бонус
